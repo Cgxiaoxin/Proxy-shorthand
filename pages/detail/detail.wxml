@@ -1,0 +1,131 @@
+<view class="container">
+  <view class="detail-card card">
+    <view class="detail-header">
+      <view class="status-badge {{todo.completed ? 'completed' : 'pending'}}">
+        {{todo.completed ? '已完成' : '待完成'}}
+      </view>
+      <view class="priority-badge priority-{{todo.priority}}" wx:if="{{todo.priority}}">
+        {{priorityLabels[todo.priority]}}
+      </view>
+    </view>
+
+    <view class="detail-content">
+      <text class="detail-title {{todo.completed ? 'completed' : ''}}">{{todo.title}}</text>
+      <text class="detail-desc" wx:if="{{todo.description}}">{{todo.description}}</text>
+      
+      <view class="detail-meta">
+        <view class="meta-item">
+          <text class="meta-label">创建时间：</text>
+          <text class="meta-value">{{formatTime(todo.createTime)}}</text>
+        </view>
+        <view class="meta-item" wx:if="{{todo.dueDate}}">
+          <text class="meta-label">截止日期：</text>
+          <text class="meta-value {{isOverdue(todo.dueDate) ? 'overdue' : ''}}">
+            {{todo.dueDate}}
+            <text class="overdue-text" wx:if="{{isOverdue(todo.dueDate)}}">（已逾期）</text>
+          </text>
+        </view>
+      </view>
+    </view>
+
+    <view class="detail-actions">
+      <button 
+        class="btn {{todo.completed ? 'btn-secondary' : 'btn-success'}}" 
+        bindtap="toggleStatus"
+      >
+        {{todo.completed ? '标记为待完成' : '标记为已完成'}}
+      </button>
+      <button class="btn btn-primary" bindtap="editTodo">编辑</button>
+      <button class="btn btn-danger" bindtap="deleteTodo">删除</button>
+    </view>
+  </view>
+
+  <!-- 编辑表单（隐藏状态） -->
+  <view class="edit-form card" wx:if="{{isEditing}}">
+    <view class="edit-header">
+      <text class="edit-title">编辑待办事项</text>
+    </view>
+
+    <form bindsubmit="saveEdit">
+      <view class="form-group">
+        <label class="form-label">标题 *</label>
+        <input 
+          class="input" 
+          name="title" 
+          value="{{editData.title}}"
+          bindinput="onEditInput"
+          data-field="title"
+          maxlength="50"
+        />
+      </view>
+
+      <view class="form-group">
+        <label class="form-label">描述</label>
+        <textarea 
+          class="textarea" 
+          name="description" 
+          value="{{editData.description}}"
+          bindinput="onEditInput"
+          data-field="description"
+          maxlength="200"
+        ></textarea>
+      </view>
+
+      <view class="form-group">
+        <label class="form-label">优先级</label>
+        <view class="priority-options">
+          <view 
+            class="priority-option {{editData.priority === 'low' ? 'active' : ''}}" 
+            bindtap="selectEditPriority" 
+            data-priority="low"
+          >
+            <view class="priority-dot priority-low"></view>
+            <text>低</text>
+          </view>
+          <view 
+            class="priority-option {{editData.priority === 'medium' ? 'active' : ''}}" 
+            bindtap="selectEditPriority" 
+            data-priority="medium"
+          >
+            <view class="priority-dot priority-medium"></view>
+            <text>中</text>
+          </view>
+          <view 
+            class="priority-option {{editData.priority === 'high' ? 'active' : ''}}" 
+            bindtap="selectEditPriority" 
+            data-priority="high"
+          >
+            <view class="priority-dot priority-high"></view>
+            <text>高</text>
+          </view>
+        </view>
+      </view>
+
+      <view class="form-group">
+        <label class="form-label">截止日期</label>
+        <picker 
+          mode="date" 
+          value="{{editData.dueDate}}" 
+          start="{{today}}" 
+          bindchange="onEditDateChange"
+        >
+          <view class="picker-input">
+            <text class="{{editData.dueDate ? '' : 'placeholder'}}">
+              {{editData.dueDate || '选择截止日期（可选）'}}
+            </text>
+            <icon type="arrow" size="16" color="#999999"></icon>
+          </view>
+        </picker>
+      </view>
+
+      <view class="edit-actions">
+        <button class="btn btn-secondary" bindtap="cancelEdit" type="button">
+          取消
+        </button>
+        <button class="btn btn-primary" form-type="submit">
+          保存
+        </button>
+      </view>
+    </form>
+  </view>
+</view>

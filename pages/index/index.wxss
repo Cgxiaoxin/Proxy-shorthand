@@ -1,0 +1,201 @@
+/* 头部统计样式 */
+.header {
+  margin-bottom: 20rpx;
+}
+
+.stat-item {
+  text-align: center;
+  flex: 1;
+}
+
+.stat-number {
+  display: block;
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 8rpx;
+}
+
+.stat-label {
+  font-size: 24rpx;
+  color: #999999;
+}
+
+/* 筛选栏样式 */
+.filter-bar {
+  margin-bottom: 20rpx;
+}
+
+.filter-item {
+  flex: 1;
+  text-align: center;
+  padding: 16rpx 0;
+  font-size: 28rpx;
+  color: #666666;
+  border-radius: 8rpx;
+  transition: all 0.3s ease;
+}
+
+.filter-item.active {
+  background: #4A90E2;
+  color: #FFFFFF;
+}
+
+/* 待办事项列表样式 */
+.todo-list {
+  margin-bottom: 120rpx;
+}
+
+.todo-item {
+  transition: all 0.3s ease;
+}
+
+.todo-item:active {
+  transform: scale(0.98);
+}
+
+/* 复选框样式 */
+.checkbox {
+  width: 40rpx;
+  height: 40rpx;
+  border: 2rpx solid #E0E0E0;
+  border-radius: 50%;
+  margin-right: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.checkbox.checked {
+  background: #2ED573;
+  border-color: #2ED573;
+}
+
+/* 待办内容样式 */
+.todo-content {
+  flex: 1;
+  margin-right: 20rpx;
+}
+
+.todo-title {
+  font-size: 32rpx;
+  color: #333333;
+  font-weight: 500;
+  margin-bottom: 8rpx;
+  display: block;
+}
+
+.todo-title.completed {
+  text-decoration: line-through;
+  color: #999999;
+}
+
+.todo-desc {
+  font-size: 26rpx;
+  color: #666666;
+  margin-bottom: 12rpx;
+  display: block;
+  line-height: 1.4;
+}
+
+.todo-meta {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+}
+
+.todo-time {
+  font-size: 22rpx;
+  color: #999999;
+}
+
+.todo-priority {
+  font-size: 22rpx;
+  padding: 4rpx 12rpx;
+  border-radius: 12rpx;
+  font-weight: 500;
+}
+
+.priority-low {
+  background: #E8F5E8;
+  color: #2ED573;
+}
+
+.priority-medium {
+  background: #FFF3E0;
+  color: #FF9800;
+}
+
+.priority-high {
+  background: #FFEBEE;
+  color: #FF4757;
+}
+
+/* 操作按钮样式 */
+.todo-actions {
+  display: flex;
+  gap: 16rpx;
+}
+
+.action-btn {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  background: #F5F5F5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.action-btn:active {
+  transform: scale(0.9);
+}
+
+/* 浮动添加按钮 */
+.fab {
+  position: fixed;
+  bottom: 40rpx;
+  right: 40rpx;
+  width: 100rpx;
+  height: 100rpx;
+  background: #4A90E2;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8rpx 24rpx rgba(74, 144, 226, 0.3);
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.fab:active {
+  transform: scale(0.9);
+  box-shadow: 0 4rpx 12rpx rgba(74, 144, 226, 0.3);
+}
+
+/* 空状态样式 */
+.empty-state {
+  text-align: center;
+  padding: 100rpx 40rpx;
+}
+
+.empty-state image {
+  width: 200rpx;
+  height: 200rpx;
+  margin-bottom: 30rpx;
+  opacity: 0.6;
+}
+
+.empty-state text {
+  display: block;
+  color: #999999;
+  font-size: 28rpx;
+  margin-bottom: 10rpx;
+}
+
+.empty-state .text-muted {
+  font-size: 24rpx;
+  margin-bottom: 0;
+}

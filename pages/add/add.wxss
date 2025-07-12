@@ -1,0 +1,226 @@
+/* 表单卡片样式 */
+.form-card {
+  margin-bottom: 30rpx;
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: 40rpx;
+}
+
+.form-title {
+  display: block;
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 8rpx;
+}
+
+.form-subtitle {
+  font-size: 26rpx;
+  color: #999999;
+}
+
+/* 表单组样式 */
+.form-group {
+  margin-bottom: 30rpx;
+  position: relative;
+}
+
+.form-label {
+  display: block;
+  font-size: 28rpx;
+  color: #333333;
+  margin-bottom: 12rpx;
+  font-weight: 500;
+}
+
+/* 输入框样式 */
+.input {
+  width: 100%;
+  box-sizing: border-box;
+  border: 2rpx solid #E0E0E0;
+  border-radius: 12rpx;
+  padding: 20rpx;
+  font-size: 28rpx;
+  background: #FFFFFF;
+  transition: all 0.3s ease;
+}
+
+.input:focus {
+  border-color: #4A90E2;
+  box-shadow: 0 0 0 4rpx rgba(74, 144, 226, 0.1);
+}
+
+/* 文本域样式 */
+.textarea {
+  width: 100%;
+  box-sizing: border-box;
+  border: 2rpx solid #E0E0E0;
+  border-radius: 12rpx;
+  padding: 20rpx;
+  font-size: 28rpx;
+  background: #FFFFFF;
+  min-height: 120rpx;
+  transition: all 0.3s ease;
+}
+
+.textarea:focus {
+  border-color: #4A90E2;
+  box-shadow: 0 0 0 4rpx rgba(74, 144, 226, 0.1);
+}
+
+/* 字符计数样式 */
+.char-count {
+  position: absolute;
+  right: 0;
+  bottom: -30rpx;
+  font-size: 22rpx;
+  color: #999999;
+}
+
+/* 优先级选项样式 */
+.priority-options {
+  display: flex;
+  gap: 20rpx;
+}
+
+.priority-option {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12rpx;
+  padding: 20rpx;
+  border: 2rpx solid #E0E0E0;
+  border-radius: 12rpx;
+  background: #FFFFFF;
+  transition: all 0.3s ease;
+}
+
+.priority-option.active {
+  border-color: #4A90E2;
+  background: rgba(74, 144, 226, 0.1);
+}
+
+.priority-option text {
+  font-size: 28rpx;
+  color: #333333;
+}
+
+.priority-option.active text {
+  color: #4A90E2;
+  font-weight: 500;
+}
+
+/* 优先级点样式 */
+.priority-dot {
+  width: 20rpx;
+  height: 20rpx;
+  border-radius: 50%;
+}
+
+.priority-low {
+  background: #2ED573;
+}
+
+.priority-medium {
+  background: #FF9800;
+}
+
+.priority-high {
+  background: #FF4757;
+}
+
+/* 日期选择器样式 */
+.picker-input {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20rpx;
+  border: 2rpx solid #E0E0E0;
+  border-radius: 12rpx;
+  background: #FFFFFF;
+  transition: all 0.3s ease;
+}
+
+.picker-input:active {
+  border-color: #4A90E2;
+}
+
+.picker-input text {
+  font-size: 28rpx;
+  color: #333333;
+}
+
+.picker-input .placeholder {
+  color: #999999;
+}
+
+/* 表单操作按钮样式 */
+.form-actions {
+  display: flex;
+  gap: 20rpx;
+  margin-top: 40rpx;
+}
+
+.form-actions .btn {
+  flex: 1;
+}
+
+/* 模板卡片样式 */
+.templates-card {
+  margin-bottom: 30rpx;
+}
+
+.templates-header {
+  margin-bottom: 20rpx;
+}
+
+.templates-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333333;
+}
+
+/* 模板列表样式 */
+.templates-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20rpx;
+}
+
+.template-item {
+  padding: 20rpx;
+  border: 2rpx solid #E0E0E0;
+  border-radius: 12rpx;
+  background: #FFFFFF;
+  transition: all 0.3s ease;
+}
+
+.template-item:active {
+  border-color: #4A90E2;
+  background: rgba(74, 144, 226, 0.05);
+  transform: scale(0.98);
+}
+
+.template-title {
+  display: block;
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #333333;
+  margin-bottom: 8rpx;
+}
+
+.template-desc {
+  display: block;
+  font-size: 24rpx;
+  color: #666666;
+  line-height: 1.4;
+}
+
+/* 按钮禁用状态 */
+.btn[disabled] {
+  background: #E0E0E0 !important;
+  color: #999999 !important;
+}
