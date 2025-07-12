@@ -1,0 +1,126 @@
+<view class="container">
+  <view class="form-card card">
+    <view class="form-header">
+      <text class="form-title">添加待办事项</text>
+      <text class="form-subtitle">创建新的待办任务</text>
+    </view>
+
+    <form bindsubmit="submitForm">
+      <!-- 标题输入 -->
+      <view class="form-group">
+        <label class="form-label">标题 *</label>
+        <input 
+          class="input" 
+          name="title" 
+          placeholder="请输入待办事项标题" 
+          value="{{formData.title}}"
+          bindinput="onInputChange"
+          data-field="title"
+          maxlength="50"
+        />
+        <text class="char-count">{{formData.title.length}}/50</text>
+      </view>
+
+      <!-- 描述输入 -->
+      <view class="form-group">
+        <label class="form-label">描述</label>
+        <textarea 
+          class="textarea" 
+          name="description" 
+          placeholder="请输入详细描述（可选）" 
+          value="{{formData.description}}"
+          bindinput="onInputChange"
+          data-field="description"
+          maxlength="200"
+        ></textarea>
+        <text class="char-count">{{formData.description.length}}/200</text>
+      </view>
+
+      <!-- 优先级选择 -->
+      <view class="form-group">
+        <label class="form-label">优先级</label>
+        <view class="priority-options">
+          <view 
+            class="priority-option {{formData.priority === 'low' ? 'active' : ''}}" 
+            bindtap="selectPriority" 
+            data-priority="low"
+          >
+            <view class="priority-dot priority-low"></view>
+            <text>低</text>
+          </view>
+          <view 
+            class="priority-option {{formData.priority === 'medium' ? 'active' : ''}}" 
+            bindtap="selectPriority" 
+            data-priority="medium"
+          >
+            <view class="priority-dot priority-medium"></view>
+            <text>中</text>
+          </view>
+          <view 
+            class="priority-option {{formData.priority === 'high' ? 'active' : ''}}" 
+            bindtap="selectPriority" 
+            data-priority="high"
+          >
+            <view class="priority-dot priority-high"></view>
+            <text>高</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 截止日期选择 -->
+      <view class="form-group">
+        <label class="form-label">截止日期</label>
+        <picker 
+          mode="date" 
+          value="{{formData.dueDate}}" 
+          start="{{today}}" 
+          bindchange="onDateChange"
+        >
+          <view class="picker-input">
+            <text class="{{formData.dueDate ? '' : 'placeholder'}}">
+              {{formData.dueDate || '选择截止日期（可选）'}}
+            </text>
+            <icon type="arrow" size="16" color="#999999"></icon>
+          </view>
+        </picker>
+      </view>
+
+      <!-- 提交按钮 -->
+      <view class="form-actions">
+        <button 
+          class="btn btn-secondary" 
+          bindtap="resetForm"
+          type="button"
+        >
+          重置
+        </button>
+        <button 
+          class="btn btn-primary" 
+          form-type="submit"
+          disabled="{{!formData.title}}"
+        >
+          添加待办
+        </button>
+      </view>
+    </form>
+  </view>
+
+  <!-- 快速添加模板 -->
+  <view class="templates-card card">
+    <view class="templates-header">
+      <text class="templates-title">快速添加模板</text>
+    </view>
+    <view class="templates-list">
+      <view 
+        class="template-item" 
+        wx:for="{{templates}}" 
+        wx:key="id"
+        bindtap="useTemplate"
+        data-template="{{item}}"
+      >
+        <text class="template-title">{{item.title}}</text>
+        <text class="template-desc">{{item.description}}</text>
+      </view>
+    </view>
+  </view>
+</view>

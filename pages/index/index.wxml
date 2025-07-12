@@ -1,0 +1,77 @@
+<view class="container">
+  <!-- 头部统计 -->
+  <view class="header card">
+    <view class="flex flex-between">
+      <view class="stat-item">
+        <text class="stat-number">{{totalCount}}</text>
+        <text class="stat-label">总计</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-number text-success">{{completedCount}}</text>
+        <text class="stat-label">已完成</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-number text-primary">{{pendingCount}}</text>
+        <text class="stat-label">待完成</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 筛选栏 -->
+  <view class="filter-bar card">
+    <view class="flex">
+      <view class="filter-item {{filter === 'all' ? 'active' : ''}}" bindtap="setFilter" data-filter="all">
+        全部
+      </view>
+      <view class="filter-item {{filter === 'pending' ? 'active' : ''}}" bindtap="setFilter" data-filter="pending">
+        待完成
+      </view>
+      <view class="filter-item {{filter === 'completed' ? 'active' : ''}}" bindtap="setFilter" data-filter="completed">
+        已完成
+      </view>
+    </view>
+  </view>
+
+  <!-- 待办事项列表 -->
+  <view class="todo-list" wx:if="{{filteredTodos.length > 0}}">
+    <view class="todo-item card fade-in" wx:for="{{filteredTodos}}" wx:key="id">
+      <view class="flex flex-between">
+        <view class="flex flex-1" bindtap="toggleTodo" data-id="{{item.id}}">
+          <view class="checkbox {{item.completed ? 'checked' : ''}}">
+            <icon wx:if="{{item.completed}}" type="success" size="16" color="#2ED573"></icon>
+          </view>
+          <view class="todo-content">
+            <text class="todo-title {{item.completed ? 'completed' : ''}}">{{item.title}}</text>
+            <text class="todo-desc" wx:if="{{item.description}}">{{item.description}}</text>
+            <view class="todo-meta">
+              <text class="todo-time">{{item.createTime}}</text>
+              <text class="todo-priority priority-{{item.priority}}" wx:if="{{item.priority}}">
+                {{priorityLabels[item.priority]}}
+              </text>
+            </view>
+          </view>
+        </view>
+        <view class="todo-actions">
+          <view class="action-btn" bindtap="editTodo" data-id="{{item.id}}">
+            <icon type="edit" size="16" color="#4A90E2"></icon>
+          </view>
+          <view class="action-btn" bindtap="deleteTodo" data-id="{{item.id}}">
+            <icon type="delete" size="16" color="#FF4757"></icon>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty-state" wx:else>
+    <image src="/images/empty.png" mode="aspectFit"></image>
+    <text>暂无待办事项</text>
+    <text class="text-muted">点击下方按钮添加新的待办事项</text>
+  </view>
+
+  <!-- 浮动添加按钮 -->
+  <view class="fab" bindtap="navigateToAdd">
+    <icon type="add" size="24" color="#FFFFFF"></icon>
+  </view>
+</view>
